@@ -1,0 +1,32 @@
+*,
+*::before,
+*::after{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;   
+}
+
+:root{
+    font-family: 'Anuphan', sans-serif;
+    --color-text: #616161;
+    --color-text: #616161;
+    --white-text-color: white;
+    --card1-gradient-color1: #1154f1;
+    --card1-gradient-color2: #8519f5;
+    --button-color: #3669e5; 
+}
+
+.principalButton{
+    background-color: var(--button-color);
+    color: var(--white-text-color);
+    border: none;
+    border-radius: 10px;
+    height: 50px;
+}
+
+textarea{
+    height: 100px;
+    width: 400px;
+    resize: none;
+    padding: 15px 10px 0px 10px;
+}

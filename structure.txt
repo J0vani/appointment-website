@@ -1,0 +1,13 @@
+The project structure implemented here is the next:
+
+- Assets: Here we have the styles or images used of the global way.
+- Components: Collection of UI Components like buttons, modals, inputs, loaders.
+- Page: This folder contains sub-folders which contains his own state and consist of varios components grouped
+- Middlewares: It has Middlewares that allow side effects in the application, like redux.
+- Routes: It consist of all the routes used in the app
+- Config: Used for a configuration files where we store enviroment variables in config.js
+- Services: Used for the library redux, inside there are 3 folders, "action", "reducers", "constant", those for manage
+the states, called in almost all the pages.
+- Utils: Consist of repeatedly functions, like js functions, objects like dropdown options, regex condition, data formatting, etc.
+
+For more information see the images at the same level that that.

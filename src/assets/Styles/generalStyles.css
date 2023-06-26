@@ -25,6 +25,9 @@
 }
 
 textarea{
+    border: none;
+    border-radius: 3px;
+    background-color: #e5eef5;
     height: 100px;
     width: 400px;
     resize: none;

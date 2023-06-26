@@ -51,6 +51,7 @@ input{
     width: 400px;
 }
 
+
 /*Efecto a aplicar en caso de que el input sea correcto*/
 /*input:valid {
     padding: 15px 10px 0px 10px;
@@ -70,29 +71,33 @@ input{
 }*/
 /**/
 
-/*input:focus {
+.inputIsEmpty{
+    padding:15px 10px 0 10px;
+    font-size:12px;
+    top:8px;
+}
+
+.labelIsEmpty{
+    font-size:12px;
+    top:8px;
+}
+
+input:focus {
     padding: 15px 10px 0px 10px;
     ~ label{
         font-size: 12px;
         top: 8px;
     }
-}*/
-
-textarea{
-    border: none;
-    border-radius: 3px;
-    background-color: #e5eef5;
-    height: 50px;
-    width: 400px;
 }
 
-textarea:valid {
+
+/*textarea:valid {
     padding: 25px 10px 0px 10px;
     ~ label{
         font-size: 12px;
         top: 8px;
     }
-}
+}*/
 
 textarea:focus {
     padding: 25px 10px 0px 10px;

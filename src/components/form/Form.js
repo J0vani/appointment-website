@@ -18,27 +18,19 @@ export default function Form(){
 //https://ifpb.github.io/javascript-guide/w3c/dom/html-element.html
 //https://www.javascripttutorial.net/dom/css/add-styles-to-an-element/
 
-    function knowIsEmpty(e){ // verificar si es mejor aplicarlo a cuando el valor está vacio o cuandose hae click en el input
-        // como un focus
-
-        let elementSelected; 
+    function knowIsEmpty(e){
         console.log("id", e.target.id)
-        console.log("element selecred", elementSelected)
         if (e.target.value) {
             console.log(e.target)
-            e.target.style.cssText += 'padding:15px 10px 0 10px;font-size:12px;top:8px';
-            e.target.labels[0].style.cssText += 'font-size:12px;top:8px';
-            /*e.target.attributeStyleMap.set('padding-top', CSS.px('15'));
-            e.target.attributeStyleMap.set('padding-right', CSS.px('10'));
-            e.target.attributeStyleMap.set('padding-left', CSS.px('10'));*/
-            
-
-            /*e.target.labels[0].attributeStyleMap.set('font-size',CSS.px('12'))
-            e.target.labels[0].attributeStyleMap.set('top',CSS.px('8'))  */
+            //e.target.style.cssText += 'padding:15px 10px 0 10px;font-size:12px;top:8px';
+            e.target.className = 'inputIsEmpty';
+            console.log(e.target.labels[0].className)
+            e.target.labels[0].className = 'labelIsEmpty';
         }else{
-            console.log(e.target)
-            //elementSelected.style.fontSize = "";
-            e.target.removeAttribute('style');
+            //e.target.removeAttribute('style');
+            e.target.removeAttribute('class');
+            e.target.labels[0].removeAttribute('class');
+            //e.target.labels[0].removeAttribute('style');
         }
     }
 
@@ -60,11 +52,11 @@ export default function Form(){
                         <label for="email">Email </label> 
                     </div>
                     <div className="dataPhoneSec">
-                        <input type="number" id="phone" name="phone" required ></input>
+                        <input type="tel" id="phone" name="phone"  pattern="[0-9]{3}[0-9]{3}[0-9]{4}" required onChange={knowIsEmpty} ></input>
                         <label for="phone">Telefono *</label>
                     </div>
                     <div className="dataCommentSec">
-                        <textarea id="comment" name="comment" required></textarea>
+                        <textarea id="comment" name="comment" onChange={knowIsEmpty}></textarea>
                         <label for="comment">Comentario</label>
                     </div>
                     <button className="principalButton">Agendar cita</button>

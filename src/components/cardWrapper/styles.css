@@ -1,0 +1,51 @@
+.cardWrapperCont{
+    width: 767px;
+    height: 700px;
+    margin: 10px;
+    border-radius: 30px;
+    box-shadow: 4px 3px 15px 3px rgba(52, 51, 51, 0.371);
+    background-color: white;
+    position: absolute;
+    right: 20px;
+    overflow-y: scroll;
+}
+
+.headCardSec{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 35px;
+    background: var(--card-black-color);
+    width: 100%;
+    border-radius: 30px 30px 0 0;
+    height: 50px;
+    color: white;
+}
+
+.fillOutCardSec{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    min-height: 700px;
+    /*flex-direction: column;*/
+    padding: 30px;
+}
+
+
+@media screen and (max-width: 991px) {
+    /* start of large tablet styles */   
+}
+    
+@media screen and (max-width: 767px) {
+    /* start of medium tablet styles */   
+}
+    
+@media screen and (max-width: 479px) {
+    .cardWrapperCont {
+        width: 375px;
+        margin: auto;
+        position: static;
+    }   
+    
+    .fillOutCardSec {
+        grid-template-columns: 100%;
+    }
+}

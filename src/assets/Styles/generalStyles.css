@@ -10,10 +10,16 @@
     font-family: 'Anuphan', sans-serif;
     --color-text: #616161;
     --color-text: #616161;
-    --white-text-color: white;
-    --card1-gradient-color1: #1154f1;
-    --card1-gradient-color2: #8519f5;
+    --card1-gradient-color1: #745353;
+    --card1-gradient-color2: #354449;
+    --card-black-color: #343635ff;
+    /*--card1-gradient-color1: #536b74;
+    --card1-gradient-color2: #354449;
     --button-color: #3669e5; 
+    --button-color: #005192; */
+    --button-color: #005192; 
+    --yellow-color: yellow;
+    --white-color: white;
 }
 
 .principalButton{

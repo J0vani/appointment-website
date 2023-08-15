@@ -19,18 +19,12 @@ export default function Form(){
 //https://www.javascripttutorial.net/dom/css/add-styles-to-an-element/
 
     function knowIsEmpty(e){
-        console.log("id", e.target.id)
         if (e.target.value) {
-            console.log(e.target)
-            //e.target.style.cssText += 'padding:15px 10px 0 10px;font-size:12px;top:8px';
             e.target.className = 'inputIsEmpty';
-            console.log(e.target.labels[0].className)
             e.target.labels[0].className = 'labelIsEmpty';
         }else{
-            //e.target.removeAttribute('style');
             e.target.removeAttribute('class');
             e.target.labels[0].removeAttribute('class');
-            //e.target.labels[0].removeAttribute('style');
         }
     }
 

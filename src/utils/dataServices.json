@@ -1,0 +1,48 @@
+{
+    "values": {
+        "serviceList": {
+            "0":{
+                "infoService": { 
+                    "type": "Corte de cabello hombre",
+                    "time": "45 min",
+                    "cost": "$120"
+                }
+            },
+            "1":{    
+                "infoService": { 
+                    "type": "Corte de cabello mujer",
+                    "time": "50 min",
+                    "cost": "$120"
+                }
+            },
+            "2":{  
+                "infoService": { 
+                    "type": "Corte de niño/ casquete corto del numero cero",
+                    "time": "80 min",
+                    "cost": "$120"
+                }
+            },
+            "3":{         
+                "infoService": { 
+                    "type": "Corte de barba",
+                    "time": "80 min",
+                    "cost": "$120"
+                }
+            },
+            "4":{           
+                "infoService": { 
+                    "type": "Tinte de cabello mujer",
+                    "time": "150 min",
+                    "cost": "$120"
+                }
+            },
+            "5":{            
+                "infoService": { 
+                    "type": "Corte barba y depilación cejas",
+                    "time": "95 min",
+                    "cost": "$120"
+                }
+            }
+        }
+    }
+}

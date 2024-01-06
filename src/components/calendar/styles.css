@@ -1,0 +1,149 @@
+.date-sec{
+    width: 100%;
+    height: 55vh;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.month-sec{
+    display: grid;
+    grid-template-columns: 90% 10%;
+}
+
+.calendar{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 5px;
+}
+
+.arrow-sec{
+    margin: 17px 0px;
+}
+
+.arrow-icon{
+    width: 35px;
+    height: 35px;
+    background-color: #0f3a1f;
+    border-radius: 100%;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+.tableCalendar{
+    height: 0px;
+    transition: all 1s ;
+}
+
+.week, .day-week{
+    display: flex;
+    justify-content: space-around;
+    margin: 5px;
+    transition: all 1s;
+}
+
+.collpased{
+    height: 0px;
+    opacity: 0;
+}
+
+.day{
+    display: inline-table;
+    height: 40px;
+    width: 40px;
+    border: 2px solid #0f3a1f;
+    border-radius: 100%;
+    vertical-align: middle;
+}
+
+.day-number{
+    display: inherit;
+    width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 100%;
+    background-color: #0f3a1f;
+    color:white;
+}
+
+tfoot{
+    margin: 10px 5px;
+    /*grid-template-columns: repeat(7, 1fr);*/
+}
+
+
+.time{
+    background-color:var(--card-black-color);
+    color: white;
+    margin: auto;
+    width: 500px;
+    height: 450px;
+    border: 1px solid ;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.timeHead{
+    padding: 20px;
+    text-align: center;
+}
+
+.timeHead > h3{
+    display: inline-block;
+}
+
+.timeHead::after{
+    display: inline-block;
+    position: relative;
+    background-color: var(--yellow-color);
+    height: 1px;
+    width: 90%;
+    content: "";
+    top: 50%;
+}
+
+.amPmSec{
+    display: grid;
+    grid-template-columns: 100% 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.amBody, .pmBody{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    cursor: pointer;
+    grid-auto-rows: min-content;
+}
+
+
+.amBody > p {
+    padding: 12px;
+    margin: 5px;
+    background-color:#4d4d4d94;
+}
+
+
+/* .pmBody{
+    display: none;
+} */
+
+.pmBody > p {
+    padding: 12px;
+    margin: 5px;
+    background-color:#4d4d4d94;
+}
+
+
+.bn-icon{
+    width: 35px;
+    height: 35px;
+    justify-content: center;
+    display: inline-block;
+}
+
+    
+@media screen and (max-width: 479px) {
+    .time{
+        width: 350px;
+    }
+}

@@ -9,8 +9,8 @@
 }
 
 
-.principal-sec{
-    width: 280px;
+.principal-sec-service{
+    width: 250px;
     background:  var(--card-black-color);
     color: var(--white-color);
     box-shadow: 4px 3px 15px 3px rgba(52, 51, 51, 0.371);
@@ -20,13 +20,13 @@
     margin: 20px auto;
 }
 
-.principal-sec:hover{
+.principal-sec-service:hover{
     transform: scale(1.1);
 }
 
 .image-sec{
     display: grid;
-    height: 220px;
+    height: 200px;
     /*background: linear-gradient(to bottom left, var(--card1-gradient-color1), var(--card1-gradient-color2));*/
     padding: 1rem 0 1rem 0;
     margin: 5px 8px;

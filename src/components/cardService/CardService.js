@@ -10,18 +10,17 @@ const clock = <FontAwesomeIcon icon={faClock} size="xl" style={{color: "white",}
 const user = <FontAwesomeIcon icon={faUser} size="xl" style={{color: "white",}}/>
 
 export default function CardService(props) { 
-    console.log(props)
-    let payload = props.users;
-    
-    
+    let payload = props.service.infoService;    
     return(
         <div className="principal-sec">
             <div className="infoServ-sec">
-                <p className="bold-letter">{data.title.service}</p> 
-                <p className="bold-letter">{data.title.time}</p> 
+                <p className="bold-letter">{payload.type}</p> 
+                <p>{payload.time}</p>
             </div>
             <div className="infoPrice-sec">
-                <p>{data.quantity}</p>
+                <div className="infoPrice-background">
+                    <p>{payload.cost}</p>
+                </div>
             </div>  
         </div>
     )

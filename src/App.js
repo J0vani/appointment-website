@@ -4,7 +4,7 @@ import barberVideo from './assets/barber.mp4';
 
 function App() {
   return (
-    <div className='app'>
+    <div className='app' id="divOne">
       <video autoPlay loop muted id="video">
         <source src={barberVideo} type="video/mp4"></source>
       </video>

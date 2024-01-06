@@ -64,14 +64,13 @@ function fillOutCardEmp(data){
 //https://1.bp.blogspot.com/-ZpgHARvqs1w/YUKnqFAaiVI/AAAAAAAAAs4/Z8AroATPTmEieYrg9KUaIuCZ-WiR1UFuQCLcBGAsYHQ/s750/Main%2Bpicture%2Bnew%2B%252829%2529.png
 //https://codepen.io/Incorr3ct/pen/ExvYJvN
 export default function CardUsers(props) { 
-    console.log(props)
     let payload = props.users;
     
     
     return(
-        <div className="principal-sec">
+        <div className="principal-sec-service">
             <div className="image-sec">
-                <img src={payload.photo} alt="imagen del tema"></img>
+                <img src={payload.photo} alt="imagen del tema" ></img>
             </div>
             {
                 (payload.type === 1) ? fillOutCardCl(payload.infoDetail) : fillOutCardEmp(payload.infoDetail)

@@ -1,0 +1,55 @@
+.activeM{
+    background-color: var(--card-black-color);
+    color: white;
+}
+
+.subtitleStep{
+    color: black;
+    text-align: center;
+}
+
+.multiStepCont{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr;
+    margin: 5px;
+}
+
+.multiStepCont p:nth-child(n){
+    color: grey;
+}
+
+
+.multiStepSec{
+    display: inherit;
+    grid-template-columns: 1fr 1fr;
+}
+
+.multiStepSec > p{
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.multiStepSec > div:last-child {
+    background-color: rgb(233 233 243);
+    position: relative;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+}
+
+.cN{
+    height: 50px;
+    width: 50px;
+    padding: 15px 0px;
+    /*background-color: rgb(233 233 243);*/
+    text-align: center;
+    border-radius: 100%;
+    margin: auto;
+}
+
+
+.barC{
+    height: 2px;
+    width: 100%;
+}

@@ -7,13 +7,15 @@ const arrowDown = <FontAwesomeIcon icon={faChevronDown} size="xl" style={{color:
 const arrowUp = <FontAwesomeIcon icon={faChevronUp} size="xl" style={{color: "white",}}/>;
 const arrowLeft = <FontAwesomeIcon icon={faAngleLeft} size="xl" style={{color: "white",}}/>;
 const arrowRigh = <FontAwesomeIcon icon={faAngleRight} size="xl" style={{color: "white",}}/>;
+
 /*
-https://www.sitepoint.com/hide-elements-in-css/
-https://stackoverflow.com/questions/3331353/transitions-on-the-css-display-property
-
-revisar si agrego el cuadro en el ultimo lugar y asi o calcular el % y restarlo
-
- */
+    Hacer que primer valor de la lista este seleccionado por defecto
+    Cambiar la circunferencia a solo el seleccionado
+    Programar evento que llegue hasta el padre y avise que ya se puede cambiar la pantalla a la final
+    El calendario tendra el dia actual seleccionado por defecto, solo la hora no, cuando se seleccione la
+    hora la pantalla de confirmación de mostrara, cuando se acepte la cita esta mostrara la pantalla final 
+    de exito
+*/
 
 
 export default function Calendar(data){
@@ -38,11 +40,8 @@ export default function Calendar(data){
     }
 
     const visibleAmPm = (e) => {
-        let amPmBody;
-        let amPmButton;
-        amPmButton = e.currentTarget;
-        amPmBody = amPmButton.parentElement.nextSibling;
-        //console.log(amPmButton.id)
+        let amPmButton = e.currentTarget;
+        let amPmBody = amPmButton.parentElement.nextSibling;
         if(amPmButton.id === 'btnRight'){       
             amPmBody.style.transform = "translateX(-100%)";
             setAmPm(false)
@@ -50,19 +49,6 @@ export default function Calendar(data){
             amPmBody.style.transform = "translateX(0%)";
             setAmPm(true)
         }
-        
-        // let amPmBody
-        // amPmBody = e.currentTarget.parentElement.parentElement;
-        // if(isAmPM){
-        //     amPmBody.childNodes[1].style.display = "none";
-        //     amPmBody.childNodes[2].style.display = "grid";
-        //     setAmPm(false);
-        // }
-        // else {
-        //     amPmBody.childNodes[1].style.display = "grid";
-        //     amPmBody.childNodes[2].style.display = "none";
-        //     setAmPm(true);
-        // }
     }
     
     return(

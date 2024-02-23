@@ -1,10 +1,6 @@
-.activeM{
-    background-color: var(--card-black-color);
-    color: white;
-}
 
 .subtitleStep{
-    color: black;
+    margin-top: 5px;
     text-align: center;
 }
 
@@ -15,12 +11,12 @@
     margin: 5px;
 }
 
-.multiStepCont p:nth-child(n){
-    color: grey;
-}
-
+.multiStepSec:last-child{
+   margin-left: 10px;
+} 
 
 .multiStepSec{
+    color: grey;
     display: inherit;
     grid-template-columns: 1fr 1fr;
 }
@@ -38,18 +34,37 @@
     top: 50%;
 }
 
-.cN{
-    height: 50px;
-    width: 50px;
-    padding: 15px 0px;
-    /*background-color: rgb(233 233 243);*/
-    text-align: center;
-    border-radius: 100%;
-    margin: auto;
-}
-
 
 .barC{
     height: 2px;
     width: 100%;
 }
+
+.cN{
+    height: 50px;
+    width: 50px;
+    padding: 15px 0px;
+    background-color: rgb(233 233 243);
+    color: gray;
+    text-align: center;
+    border-radius: 100%;
+    margin: auto;
+}
+
+.activeM{
+    color: black;
+}
+
+.activeM > .cN{
+    background-color: var(--card-black-color);
+    color: white;
+    transition: ease-in-out 0.5s;
+}
+
+.activeM > .barC{
+    background-color: var(--card-black-color) !important;
+    transition: ease-in-out 0.7s;
+}
+
+
+

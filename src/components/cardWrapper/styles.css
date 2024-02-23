@@ -17,18 +17,22 @@
     position: absolute;
     right: 20px;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
-.headCardSec{
-    /*display: flex;
-    justify-content: space-between;
-    padding: 15px 35px;
-    background: var(--card-black-color);
-    width: 100%;*/
-    /*border-radius: 30px 30px 0 0;
-    height: 50px;
-    color: white;*/
+.BNSec{
+    height: 40px;
+    width: 100%;
+    padding: 10px 30px;
+    position: relative;
 }
+
+.BNSec > div {
+    position: absolute;
+    display: inline;
+    left: 30px;
+}
+
 
 .cardSec{
     animation-name: cardT;

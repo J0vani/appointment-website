@@ -12,22 +12,27 @@ export default function MultiStep({values}){
 
     function colorMultiStp(){
         const stepSec = document.querySelectorAll('.multiStepCont');
-        //stepSec[0].childNodes[values-1].firstChild.classList.add('activeM');
-        stepSec[0].childNodes[user.color-1].firstChild.classList.add('activeM');
+        stepSec[0].childNodes.forEach(p => p.classList.remove('activeM'));
+        let newArr = Object.values(stepSec[0].childNodes).slice(0,user.color);
+        newArr.forEach(e => e.classList.add("activeM"));
+        //stepSec[0].childNodes[0,1].classList("activeM")
+        // for(let i = 0; user.color > i; i++){
+        //     console.log("value of ",i)
+        //     stepSec[0].childNodes[i].classList.add('activeM');
+        // }
+        // stepSec[0].childNodes[user.color-1].classList.add('activeM');
+        //stepSec[0].childNodes[user.color-1].firstChild.firstChild.classList.add('whiteColor');
     }
     
    useEffect(() => {
-        //if(values > 0){
-        if(user.color > 0){
-            colorMultiStp(); 
-        }
+        colorMultiStp(); 
     })
 
     return( 
         <div className="multiStepCont" >
             <div className="multiStepSec">
                 <div className="userSec cN" id="s1">
-                    <p id='dd'>1</p>
+                    <p>1</p>
                 </div>
                 <p className="subtitleStep">Profesional</p>
                 <div className="barC" id="ss1"></div>
@@ -40,7 +45,7 @@ export default function MultiStep({values}){
                 <div className="barC" id="ss2"></div>
             </div>
             <div className="multiStepSec">
-                <div className="timeSec cN" id="s2">
+                <div className="timeSec cN" id="s3">
                     <p>3</p>
                 </div>
                 <p className="subtitleStep">Horario</p>

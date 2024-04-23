@@ -4,6 +4,11 @@ const initialState = {
     name: "",
     username: "",
     color: 0,
+    schedule: {
+        profesional: "",
+        service: "",
+        dateTime: ""
+    }
 };
 
 export const userSlide = createSlice({
@@ -12,10 +17,13 @@ export const userSlide = createSlice({
     reducers: {
         changeColor: (state, action) => {
             state.color = action.payload
+        },
+        fillSchedule: (state, action) => {
+            Object.assign(state.schedule, action.payload);
         }
     }
 })
 
-export const {changeColor} = userSlide.actions;
+export const {changeColor, fillSchedule} = userSlide.actions;
 //export const changeColor = userSlide.actions.changeColor; <-- este codigo es igual al de arriba
 export default userSlide.reducer;

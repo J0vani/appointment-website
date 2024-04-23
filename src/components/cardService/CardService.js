@@ -9,8 +9,8 @@ const phone = <FontAwesomeIcon icon={faMobileButton} size="xl" style={{color: "w
 const clock = <FontAwesomeIcon icon={faClock} size="xl" style={{color: "white",}}/>
 const user = <FontAwesomeIcon icon={faUser} size="xl" style={{color: "white",}}/>
 
-export default function CardService(props) { 
-    let payload = props.service.infoService;    
+export default function CardService(props) {
+    let payload = props.services.infoService;    
     return(
         <div className="principal-sec">
             <div className="infoServ-sec">

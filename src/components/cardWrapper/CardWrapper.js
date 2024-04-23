@@ -3,7 +3,9 @@
 
 import {React,useEffect} from 'react'; 
 import { v4 as uuidv4 } from 'uuid';
-import CardUsers from '../cardUsers/CardUsers';
+// import CardUsers from '../cardUsers/CardUsers';
+import UserSection from '../userSection/UserSection';
+import ServiceSection from '../serviceSection/ServiceSection';
 import CardService from '../cardService/CardService';
 import MultiStep from '../multiStepIndicator/MultiStep';
 import Calendar from '../calendar/Calendar';
@@ -11,12 +13,16 @@ import './styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft} from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from "react-redux";
-import { changeColor } from "../../redux/userSlice";
+import { changeColor,fillSchedule } from "../../redux/userSlice";
+import { saveToLocalStorage } from '../../utils/saveLocalStorageData';
+
 
 const arrowLeft = <FontAwesomeIcon icon={faAngleLeft} size="xl" style={{color: "rgba(52, 51, 51, 0.371",}}/>;
 
-const dataValues = require('../../utils/dataBarber.json');
-const dataValuesSer = require('../../utils/dataServices.json');
+
+const dataBarber = require('../../utils/dataBarber.json');
+const dataSer = require('../../utils/dataServices.json');
+const days = require('../../utils/calendarDays.json');
 //var dataValues = require('../../utils/dataServices.json');
 
 /* Revisar para bubbling
@@ -34,6 +40,14 @@ https://stackoverflow.com/questions/69717912/how-to-pass-the-props-value-from-th
 /* Solamente poner la flecha izquierda */
 
 export default function CardWrapper(props){
+    saveToLocalStorage('days', days);
+    saveToLocalStorage('dataBarber', dataBarber);
+    saveToLocalStorage('dataSer', dataSer);
+    let sessionDays = JSON.parse(sessionStorage.getItem('days'));
+    let sessionBarber = JSON.parse(sessionStorage.getItem('dataBarber'));
+    let sessionSer = JSON.parse(sessionStorage.getItem('dataSer'));
+
+
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user)
     //añadir key
@@ -59,10 +73,17 @@ export default function CardWrapper(props){
         dispatch(changeColor(numGoBack))
     }
 
+    function handleUserClick(e, ref){
+        let divActive = ref.parentElement;
+        let profesional =  {'profesional' : e}; 
+        divActive.classList.remove('active');
+        divActive.nextSibling.classList.add('active')
+        dispatch(fillSchedule(profesional))
+        dispatch(changeColor(ref.parentElement.id));
+    }
+
     useEffect(() => {
-        document.querySelectorAll('.cardSec > div').forEach((e) => e.addEventListener('click', changeCardSec));
-    })
-    
+    });
 
     return(
         <div className="cardWrapperCont">
@@ -77,16 +98,18 @@ export default function CardWrapper(props){
             <div className="fillOutCardSec">
                 <div className='cardSec active' id="1">
                     {
-                        Object.values(dataValues.values.personList).map((val) => <CardUsers users={val} key={uuidv4()}></CardUsers>)
+                        // Object.values(dataValues.values.personList).map((val) => <CardUsers users={val} key={uuidv4()}></CardUsers>)
+                        <UserSection onUserClick={handleUserClick} values={sessionBarber}></UserSection>
                     }
                 </div>
                 <div className='cardSec' id="2">
                     {
-                        Object.values(dataValuesSer.values.serviceList).map((val, id) => <CardService service={val} key={uuidv4()}></CardService>)
+                        <ServiceSection onUserClick={handleUserClick} values={sessionSer}></ServiceSection>
+                        //Object.values(dataValuesSer.values.serviceList).map((val, id) => <CardService service={val} key={uuidv4()}></CardService>)
                     }
                 </div>
                 <div className='secThree'>
-                    <Calendar></Calendar>
+                    <Calendar values={sessionDays}></Calendar>
                 </div>
             </div>
         </div>

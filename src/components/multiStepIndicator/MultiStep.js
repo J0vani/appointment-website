@@ -31,21 +31,21 @@ export default function MultiStep({values}){
     return( 
         <div className="multiStepCont" >
             <div className="multiStepSec">
-                <div className="userSec cN" id="s1">
+                <div className="serviceSecH cN" id="s1">
                     <p>1</p>
                 </div>
                 <p className="subtitleStep">Profesional</p>
                 <div className="barC" id="ss1"></div>
             </div>
             <div className="multiStepSec">
-                <div className="serviceSec cN" id="s2">
+                <div className="serviceSecH cN" id="s2">
                     <p>2</p>
                 </div>
                 <p className="subtitleStep">Service</p>
                 <div className="barC" id="ss2"></div>
             </div>
             <div className="multiStepSec">
-                <div className="timeSec cN" id="s3">
+                <div className="timeSecH cN" id="s3">
                     <p>3</p>
                 </div>
                 <p className="subtitleStep">Horario</p>

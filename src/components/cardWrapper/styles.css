@@ -1,6 +1,6 @@
 
 .active{
-    display: grid !important;
+    display: block !important;
 }
 
 .fillOutCardSec > div {
@@ -37,7 +37,6 @@
 .cardSec{
     animation-name: cardT;
     animation-duration: 1s;
-    grid-template-columns: 50% 50%;
     padding: 30px;
     position: relative;
 }
@@ -63,7 +62,7 @@
         position: static;
     }   
     
-    .cardSec {
+    /* .cardSec {
         grid-template-columns: 100%;
-    }
+    } */
 }

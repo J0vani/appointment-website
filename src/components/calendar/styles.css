@@ -53,6 +53,7 @@
     border: 2px solid #0f3a1f;
     border-radius: 100%;
     vertical-align: middle;
+    background-color: #0f3a1f;
 }
 
 .day-number{
@@ -61,7 +62,6 @@
     padding: 5px;
     cursor: pointer;
     border-radius: 100%;
-    background-color: #0f3a1f;
     color:white;
 }
 

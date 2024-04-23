@@ -68,7 +68,7 @@ export default function CardUsers(props) {
     
     
     return(
-        <div className="principal-sec-service">
+        <div className="principal-sec-service" data-id={payload.id}>
             <div className="image-sec">
                 <img src={payload.photo} alt="imagen del tema" ></img>
             </div>

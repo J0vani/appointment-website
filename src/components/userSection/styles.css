@@ -1,0 +1,25 @@
+
+.divCard{
+    width: 250px ;
+    margin: 10px auto;
+}
+
+.userSec{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+
+@media screen and (max-width: 991px) {
+      
+}
+
+    
+@media screen and (max-width: 767px) {  
+}
+    
+@media screen and (max-width: 479px) {
+    .userSec {
+        grid-template-columns: 100%;
+    }
+}

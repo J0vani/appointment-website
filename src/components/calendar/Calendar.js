@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faAngleLeft, faAngleRight, faChevronDown, faChevronUp} from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react';
+import {useState} from 'react';
 import './styles.css';
 
 const arrowDown = <FontAwesomeIcon icon={faChevronDown} size="xl" style={{color: "white",}}/>;
 const arrowUp = <FontAwesomeIcon icon={faChevronUp} size="xl" style={{color: "white",}}/>;
 const arrowLeft = <FontAwesomeIcon icon={faAngleLeft} size="xl" style={{color: "white",}}/>;
 const arrowRigh = <FontAwesomeIcon icon={faAngleRight} size="xl" style={{color: "white",}}/>;
+
 
 /*
     Hacer que primer valor de la lista este seleccionado por defecto
@@ -15,16 +16,20 @@ const arrowRigh = <FontAwesomeIcon icon={faAngleRight} size="xl" style={{color: 
     El calendario tendra el dia actual seleccionado por defecto, solo la hora no, cuando se seleccione la
     hora la pantalla de confirmación de mostrara, cuando se acepte la cita esta mostrara la pantalla final 
     de exito
+
+    revisar ejemplo de chatgpt
 */
 
 
-export default function Calendar(data){
-
+export default function Calendar(props){
     const [isToggled, setToggle] = useState(false);
     const [isAmPM, setAmPm] = useState(true);
+    const [AMSchedules, setAMSchedules] = useState([]);
+    const [PMSchedules, setPMSchedules] = useState([]);
+    const days = props.values.days;
+    let schedules = [];
 
     const showSec =(e) => {
-        console.log("")
         let elementHidden = e.currentTarget.parentElement.previousSibling.querySelector('tbody');
         let elementChild = elementHidden.childNodes;
         if (isToggled){  
@@ -50,6 +55,37 @@ export default function Calendar(data){
             setAmPm(true)
         }
     }
+
+    const printDates = (e) => {
+        let tdValue = e.target.textContent;
+        
+        if(tdValue){
+            schedules = days.find((day) => day.numero === parseInt(tdValue));
+            let horarios = schedules.information.availableHours;
+            console.log("horarios",horarios.length)
+            if(horarios.length > 1){
+                let resAm = [];
+                let resPm = [];
+                for (let i = 0; i < horarios.length; i++) {
+                    if (parseInt(horarios[i].split(':')[0]) < 12) {
+                        resAm.push(horarios[i]);
+                    } else {
+                        resPm.push(horarios[i]);
+                    }
+                }
+                setAMSchedules(resAm);
+                setPMSchedules(resPm);
+            }else{
+                setAMSchedules(['No hay horarios disponibles']);
+                setPMSchedules(['No hay horarios disponibles']);
+            }
+        }else(
+            console.log("no")
+        )
+       console.log("AMSchedules",AMSchedules);
+       console.log("PMSchedules",PMSchedules);
+    }
+
     
     return(
         <div className="date-sec">
@@ -60,121 +96,51 @@ export default function Calendar(data){
                 <table className="calendar">
                     <thead>
                         <tr className="week">
-                            <td className="day">
-                                <span className="day-number">1</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">2</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">3</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">4</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">5</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">6</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">7</span>
-                            </td>
+                            {
+                                Object.values(days).slice(0, 7).map((day, index) => (
+                                    <td key={index} className="day">
+                                        <span className="day-number" onClick={printDates}>{day.numero}</span>
+                                    </td>
+                                ))
+                            }   
                         </tr>    
                     </thead>
                     <tbody className='tableCalendar hiddenT'>
                         <tr className="week collpased">
-                            <td className="day">
-                                <span className="day-number">8</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">9</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">10</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">11</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">12</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">13</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">14</span>
-                            </td>
+                            {
+                                Object.values(days).slice(7, 14).map((day, index) => (
+                                    <td key={index} className="day">
+                                        <span className="day-number" onClick={printDates}>{day.numero}</span>
+                                    </td>
+                                ))
+                            }
                         </tr>
                         <tr className="week collpased">
-                            <td className="day">
-                                <span className="day-number">15</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">16</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">17</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">18</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">19</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">20</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">21</span>
-                            </td>
+                            {
+                                Object.values(days).slice(14, 21).map((day, index) => (
+                                    <td key={index} className="day">
+                                        <span className="day-number" onClick={printDates}>{day.numero}</span>
+                                    </td>
+                                ))
+                            }
                         </tr>
                         <tr className="week collpased">
-                            <td className="day">
-                                <span className="day-number">22</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">23</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">24</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">25</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">26</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">27</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">28</span>
-                            </td>
+                            {
+                                Object.values(days).slice(21,28).map((day, index) => (
+                                    <td key={index} className="day">
+                                        <span className="day-number" onClick={printDates}>{day.numero}</span>
+                                    </td>
+                                ))
+                            }
                         </tr>
                         <tr className="week collpased">
-                            <td className="day">
-                                <span className="day-number">29</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">30</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">1</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">2</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">3</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">4</span>
-                            </td>
-                            <td className="day">
-                                <span className="day-number">5</span>
-                            </td>
+                            {
+                                Object.values(days).slice(28, 35).map((day, index) => (
+                                    <td key={index} className="day">
+                                        <span className="day-number" onClick={printDates}>{day.numero}</span>
+                                    </td>
+                                ))
+                            }
                         </tr>     
                     </tbody>
                     <tfoot>
@@ -212,28 +178,16 @@ export default function Calendar(data){
                     </div>
                         <div className='amPmSec'>
                             <div className='amBody'>
-                                    <p>9:00 am</p>
-                                    <p>9:30 am</p>
-                                    <p>10:00 am</p>
-                                    <p>10:30 am</p>
-                                    <p>11:30 am</p>
+                                {
+                                    AMSchedules.length === 0 ? <p>No hay horarios disponibles xd</p> :
+                                    AMSchedules.map((schedule, index) => <p key={index}>{schedule}</p>)
+                                }      
                             </div>
                             <div className='pmBody'>
-                                    <p>12:00 pm</p>
-                                    <p>12:30 pm</p>
-                                    <p>13:30 pm</p>
-                                    <p>14:00 pm</p>
-                                    <p>14:30 pm</p>
-                                    <p>15:00 pm</p>
-                                    <p>15:30 pm</p>
-                                    <p>16:00 pm</p>
-                                    <p>16:30 pm</p>
-                                    <p>17:00 pm</p>
-                                    <p>17:30 pm</p>
-                                    <p>18:00 pm</p>
-                                    <p>18:30 pm</p>
-                                    <p>19:00 pm</p>
-                                    <p>20:30 pm</p>
+                                {
+                                    PMSchedules.length === 0 ? <p>No hay horarios disponibles</p> :
+                                    PMSchedules.map((schedule, index) => <p key={index}>{schedule}</p>)
+                                }
                             </div>
                         </div>
                 </div>

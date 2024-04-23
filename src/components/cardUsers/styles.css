@@ -28,8 +28,7 @@
     display: grid;
     height: 200px;
     /*background: linear-gradient(to bottom left, var(--card1-gradient-color1), var(--card1-gradient-color2));*/
-    padding: 1rem 0 1rem 0;
-    margin: 5px 8px;
+    padding: 12px 5px 12px 8px;
     border-radius: 5% 5% 100% 5% / 5% 5% 50% 5%;
 }
 

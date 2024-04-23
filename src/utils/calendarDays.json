@@ -1,66 +1,190 @@
 {
-    "values": {
-        "daysList": {
-            "1":{
-                "availability": true,
-                "dateTime": "",
-                "infoDetail": { 
-                    "personData" : {
-                        "name": "Juan",
-                        "lname": "Perez"
-                    },
-                    "availability": "Disponible",
-                    "availabilityDay": "Martes"
-                }
-            },
-            "2":{
-                "type": 0,
-                "photo": "https://images.pexels.com/photos/2726111/pexels-photo-2726111.jpeg?cs=srgb&dl=pexels-masha-raymers-2726111.jpg&fm=jpg",
-                "infoDetail": { 
-                    "personData" : {
-                        "name": "Maria",
-                        "lname": "Santiago"
-                    },
-                    "availability": "Disponible",
-                    "availabilityDay": "Martes"
-                }
-            },
-            "3":{
-                "type": 0,
-                "photo": "https://paramotoroutlet.com/jpg/1594668408164.jpg" ,
-                "infoDetail": { 
-                    "personData" : {
-                        "name": "Pedro",
-                        "lname": "Ruiz"
-                    },
-                    "availability": "No disponible",
-                    "availabilityDay": "-"
-                }
-            },
-            "4":{
-                "type": 0,
-                "photo": "https://static.wixstatic.com/media/7fa9fc_20b81982b5174c6087d2c12fc071058e~mv2.jpg/v1/fill/w_640,h_428,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/7fa9fc_20b81982b5174c6087d2c12fc071058e~mv2.jpg" ,
-                "infoDetail": { 
-                    "personData" : {
-                        "name": "Mario",
-                        "lname": "Bros"
-                    },
-                    "availability": "Disponible",
-                    "availabilityDay": "Viernes"
-                }
-            },
-            "4":{
-                "type": 0,
-                "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf686xJRtWDvGxXHISwA9QBWLPi-EVW3PFIw&usqp=CAU" ,
-                "infoDetail": { 
-                    "personData" : {
-                        "name": "Fede",
-                        "lname": "Lobo"
-                    },
-                    "availability": "No disponible",
-                    "availabilityDay": "-"
-                }
-            }
-        }
-    }
+    "year": "2024",
+    "month": "March",
+    "days": [
+        {"numero": "", "information":{}},
+        {"numero": "", "information":{}},
+        {"numero": "", "information":{}},
+        {"numero": "", "information":{}},
+        {"numero": 1, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"],
+            "bookedHours": ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 2, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 3, "information": {
+            "booked": false,
+            "availableHours": ["10:00", "10:30", "11:00", "11:30","12:00", "12:30"],
+            "bookedHours": ["13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 4, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"],
+            "bookedHours": [""]
+        }},
+        {
+            "numero": 5, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"],
+            "bookedHours": [""]
+        }},
+        {
+            "numero": 6, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 7, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00"],
+            "bookedHours": ["13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 8, "information": {
+            "booked": false,
+            "availableHours": ["11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"],
+            "bookedHours": ["09:00", "09:30", "10:00", "10:30", "11:00"]
+        }},
+        {
+            "numero": 9, "information": {
+            "booked": false,
+            "availableHours": ["10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"],
+            "bookedHours": ["09:00", "09:30", "10:00"]
+        }},
+        {
+            "numero": 10, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"],
+            "bookedHours": [""]
+        }},
+        {
+            "numero": 11, "information": {
+            "booked": true,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"],
+            "bookedHours": [""]
+        }},
+        {
+            "numero": 12, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"],
+            "bookedHours": [""]
+        }},
+        {
+            "numero": 13, "information": {
+            "booked": true,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"],
+            "bookedHours": ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 14, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 15, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30"],
+            "bookedHours": ["13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 16, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"],
+            "bookedHours": [""]
+        }},
+        {
+            "numero": 17, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00"],
+            "bookedHours": ["13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 18, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"],
+            "bookedHours": ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 19, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 20, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 21, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00"],
+            "bookedHours": ["11:30","12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 22, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"]
+        }},
+        {
+            "numero": 23, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 24, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"]
+        }},
+        {
+            "numero": 25, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 26, "information": {
+            "booked": false,
+            "availableHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"],
+            "bookedHours": []
+        }},
+        {
+            "numero": 27, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30"]
+        }},
+        {
+            "numero": 28, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"]
+        }},
+        {
+            "numero": 29, "information": {
+            "booked": false,
+            "availableHours": ["12:00", "12:30", "13:00", "13:30", "14:00", "14:30"],
+            "bookedHours": []
+        }},
+        {
+            "numero": 30, "information": {
+            "booked": true,
+            "availableHours": [""],
+            "bookedHours": ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30"]
+        }},
+        {"numero": "", "information":{}}
+    ]
 }

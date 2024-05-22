@@ -22,7 +22,7 @@ const arrowLeft = <FontAwesomeIcon icon={faAngleLeft} size="xl" style={{color: "
 
 const dataBarber = require('../../utils/dataBarber.json');
 const dataSer = require('../../utils/dataServices.json');
-const days = require('../../utils/calendarDays.json');
+//const days = require('../../utils/calendarDays.json');
 //var dataValues = require('../../utils/dataServices.json');
 
 /* Revisar para bubbling
@@ -39,14 +39,16 @@ https://stackoverflow.com/questions/69717912/how-to-pass-the-props-value-from-th
 
 /* Solamente poner la flecha izquierda */
 
-export default function CardWrapper(props){
-    saveToLocalStorage('days', days);
+export default function CardWrapper(){
+    //saveToLocalStorage('days', days);
     saveToLocalStorage('dataBarber', dataBarber);
     saveToLocalStorage('dataSer', dataSer);
     let sessionDays = JSON.parse(sessionStorage.getItem('days'));
     let sessionBarber = JSON.parse(sessionStorage.getItem('dataBarber'));
     let sessionSer = JSON.parse(sessionStorage.getItem('dataSer'));
-
+    let date = new Date();
+    let month = date.toString().split(' ')[1];
+    let currentDay = date.toString().split(' ')[2];
 
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user)
@@ -54,11 +56,6 @@ export default function CardWrapper(props){
     //https://stackoverflow.com/questions/28329382/understanding-unique-keys-for-array-children-in-react-js
     
     function changeCardSec(e){
-        // let num = e.currentTarget.parentElement.id;
-        // let sections = e.currentTarget.parentElement.parentElement;
-        // sections.childNodes.forEach(p => p.classList.remove('active'));
-        // sections.childNodes[num].classList.add('active');
-        // dispatch(changeColor(num));
         let section = e.currentTarget.parentElement;
         section.classList.remove('active');
         section.nextSibling.classList.add('active')
@@ -83,6 +80,14 @@ export default function CardWrapper(props){
     }
 
     useEffect(() => {
+        // https://www.contentstack.com/docs/developers/how-to-guides/understanding-and-resolving-cors-error
+        const url = 'http://127.0.0.1:5000/months/'+month; 
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            saveToLocalStorage('days', data );
+        })
+        .catch(err => console.log(err));
     });
 
     return(
@@ -109,11 +114,18 @@ export default function CardWrapper(props){
                     }
                 </div>
                 <div className='secThree'>
-                    <Calendar values={sessionDays}></Calendar>
+                    {
+                        sessionDays === null ? <h1>Loading...</h1> : <Calendar values={{sessionDays, "currentDay": currentDay}}></Calendar>
+                    }
                 </div>
             </div>
         </div>
     )
-
-    
 }
+
+/*
+    - Pasar el servicio a express
+    - Revisar bien la onsulta con useEffect y com funciona
+    - Revisar almacenamiento en sessionStorage ya que si hay datos en la primera consulta no funciona
+    - Revisar que cada etiqueda <p> sea seleccionado con su hora correspondiente
+ */

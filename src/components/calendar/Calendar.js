@@ -22,11 +22,14 @@ const arrowRigh = <FontAwesomeIcon icon={faAngleRight} size="xl" style={{color: 
 
 
 export default function Calendar(props){
+    console.log("data", props)
     const [isToggled, setToggle] = useState(false);
     const [isAmPM, setAmPm] = useState(true);
     const [AMSchedules, setAMSchedules] = useState([]);
     const [PMSchedules, setPMSchedules] = useState([]);
-    const days = props.values.days;
+    const [booking, setBooking] = useState({});
+    let days = props.values.sessionDays.days;
+    let currentDay = props.values.currentDay;
     let schedules = [];
 
     const showSec =(e) => {
@@ -62,7 +65,6 @@ export default function Calendar(props){
         if(tdValue){
             schedules = days.find((day) => day.numero === parseInt(tdValue));
             let horarios = schedules.information.availableHours;
-            console.log("horarios",horarios.length)
             if(horarios.length > 1){
                 let resAm = [];
                 let resPm = [];
@@ -80,10 +82,8 @@ export default function Calendar(props){
                 setPMSchedules(['No hay horarios disponibles']);
             }
         }else(
-            console.log("no")
+            console.log("No values")
         )
-       console.log("AMSchedules",AMSchedules);
-       console.log("PMSchedules",PMSchedules);
     }
 
     

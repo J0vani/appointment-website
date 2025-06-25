@@ -34,14 +34,14 @@ export default function MultiStep({values}){
                 <div className="serviceSecH cN" id="s1">
                     <p>1</p>
                 </div>
-                <p className="subtitleStep">Profesional</p>
+                <p className="subtitleStep">Servicio</p>
                 <div className="barC" id="ss1"></div>
             </div>
             <div className="multiStepSec">
                 <div className="serviceSecH cN" id="s2">
                     <p>2</p>
                 </div>
-                <p className="subtitleStep">Service</p>
+                <p className="subtitleStep">Barbero</p>
                 <div className="barC" id="ss2"></div>
             </div>
             <div className="multiStepSec">

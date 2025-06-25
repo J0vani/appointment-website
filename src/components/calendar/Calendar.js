@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faAngleLeft, faAngleRight, faChevronDown, faChevronUp} from '@fortawesome/free-solid-svg-icons'
-import {useState} from 'react';
+import {faAngleLeft, faAngleRight, faChevronDown, faChevronUp, prefix} from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useState, useRef} from 'react';
 import './styles.css';
 
 const arrowDown = <FontAwesomeIcon icon={faChevronDown} size="xl" style={{color: "white",}}/>;
@@ -10,8 +10,6 @@ const arrowRigh = <FontAwesomeIcon icon={faAngleRight} size="xl" style={{color: 
 
 
 /*
-    Hacer que primer valor de la lista este seleccionado por defecto
-    Cambiar la circunferencia a solo el seleccionado
     Programar evento que llegue hasta el padre y avise que ya se puede cambiar la pantalla a la final
     El calendario tendra el dia actual seleccionado por defecto, solo la hora no, cuando se seleccione la
     hora la pantalla de confirmación de mostrara, cuando se acepte la cita esta mostrara la pantalla final 
@@ -22,7 +20,6 @@ const arrowRigh = <FontAwesomeIcon icon={faAngleRight} size="xl" style={{color: 
 
 
 export default function Calendar(props){
-    console.log("data", props)
     const [isToggled, setToggle] = useState(false);
     const [isAmPM, setAmPm] = useState(true);
     const [AMSchedules, setAMSchedules] = useState([]);
@@ -30,21 +27,23 @@ export default function Calendar(props){
     const [booking, setBooking] = useState({});
     let days = props.values.sessionDays.days;
     let currentDay = props.values.currentDay;
+    const [isDaySel, setDaySel] = useState('');
     let schedules = [];
 
-    const showSec =(e) => {
-        let elementHidden = e.currentTarget.parentElement.previousSibling.querySelector('tbody');
+    const hiddeSec = () => {
+        let elementHidden = document.querySelector('.tableCalendar');
         let elementChild = elementHidden.childNodes;
-        if (isToggled){  
-            elementHidden.style.height = '0px';
-            elementChild.forEach(e => { e.style.height = "0px"; e.style.opacity = '0'} )  
-            setToggle(false);
-        }
-        else{
-            elementHidden.style.height = "65%";
-            elementChild.forEach(e => {e.style.height = "50px"; e.style.opacity = '1'})
-            setToggle(true)
-        }
+        elementHidden.style.height = '0px';
+        elementChild.forEach(e => { e.style.height = "0px"; e.style.opacity = '0'} )  
+        setToggle(false);
+    }
+
+    const showSec =() => {
+        let elementHidden = document.querySelector('.tableCalendar');
+        let elementChild = elementHidden.childNodes;
+        elementHidden.style.height = "65%";
+        elementChild.forEach(e => {e.style.height = "50px"; e.style.opacity = '1'})
+        setToggle(true)
     }
 
     const visibleAmPm = (e) => {
@@ -59,13 +58,18 @@ export default function Calendar(props){
         }
     }
 
+    useEffect(() => {
+        printDates({target: {textContent: currentDay.day}});
+    }, [])
+
     const printDates = (e) => {
-        let tdValue = e.target.textContent;
+        console.log("Day selected", e.target.innerText)
+        let daySelected = e.target.textContent;
         
-        if(tdValue){
-            schedules = days.find((day) => day.numero === parseInt(tdValue));
+        if(daySelected){
+            schedules = days.find((day) => day.numero === parseInt(daySelected));
             let horarios = schedules.information.availableHours;
-            if(horarios.length > 1){
+            if(horarios.length >= 1 && horarios[0] !== ""){
                 let resAm = [];
                 let resPm = [];
                 for (let i = 0; i < horarios.length; i++) {
@@ -75,6 +79,8 @@ export default function Calendar(props){
                         resPm.push(horarios[i]);
                     }
                 }
+                console.log("resAm", resAm);
+                console.log("resPM", resPm)
                 setAMSchedules(resAm);
                 setPMSchedules(resPm);
             }else{
@@ -84,22 +90,28 @@ export default function Calendar(props){
         }else(
             console.log("No values")
         )
+        hiddeSec();
+        setDaySel(daySelected);
     }
 
-    
     return(
         <div className="date-sec">
             <h2 className="month-year">
-                    Octubre 2022
-                </h2>
+                {isDaySel + '  ' + currentDay.month + '  ' + currentDay.year}
+            </h2>
             <div className="month-sec">
                 <table className="calendar">
                     <thead>
                         <tr className="week">
                             {
                                 Object.values(days).slice(0, 7).map((day, index) => (
+                                    day.numero ?
                                     <td key={index} className="day">
-                                        <span className="day-number" onClick={printDates}>{day.numero}</span>
+                                        <button className="day-number" onClick={printDates}>{day.numero}</button>
+                                    </td>
+                                    :
+                                    <td key={index} className="day-NV">
+                                        <button className="day-number-NV">{day.numero}</button>                           
                                     </td>
                                 ))
                             }   
@@ -110,7 +122,7 @@ export default function Calendar(props){
                             {
                                 Object.values(days).slice(7, 14).map((day, index) => (
                                     <td key={index} className="day">
-                                        <span className="day-number" onClick={printDates}>{day.numero}</span>
+                                        <button className="day-number" onClick={printDates}>{day.numero}</button>
                                     </td>
                                 ))
                             }
@@ -119,7 +131,7 @@ export default function Calendar(props){
                             {
                                 Object.values(days).slice(14, 21).map((day, index) => (
                                     <td key={index} className="day">
-                                        <span className="day-number" onClick={printDates}>{day.numero}</span>
+                                        <button className="day-number" onClick={printDates}>{day.numero}</button>
                                     </td>
                                 ))
                             }
@@ -128,7 +140,7 @@ export default function Calendar(props){
                             {
                                 Object.values(days).slice(21,28).map((day, index) => (
                                     <td key={index} className="day">
-                                        <span className="day-number" onClick={printDates}>{day.numero}</span>
+                                        <button className="day-number" onClick={printDates}>{day.numero}</button>
                                     </td>
                                 ))
                             }
@@ -136,8 +148,13 @@ export default function Calendar(props){
                         <tr className="week collpased">
                             {
                                 Object.values(days).slice(28, 35).map((day, index) => (
+                                    day.numero ?
                                     <td key={index} className="day">
-                                        <span className="day-number" onClick={printDates}>{day.numero}</span>
+                                        <button className="day-number" onClick={printDates}>{day.numero}</button>
+                                    </td>
+                                    :
+                                    <td key={index} className="day-NV">
+                                        <button className="day-number-NV">{day.numero}</button>                           
                                     </td>
                                 ))
                             }
@@ -156,7 +173,7 @@ export default function Calendar(props){
                     </tfoot>
                 </table>
                 <div className='arrow-sec'>
-                    <div className='arrow-icon' onClick={showSec}>
+                    <div className='arrow-icon' onClick={isToggled ? hiddeSec : showSec }>
                         <i>{
                             isToggled ? arrowUp : arrowDown  
                         }</i>

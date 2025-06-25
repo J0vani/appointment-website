@@ -3,7 +3,7 @@ import CardService from '../cardService/CardService.js';
 import styles from './styles.css';
 import { v4 as uuidv4 } from 'uuid';
 
-export default function ServiceSection({onUserClick, values}) {
+export default function ServiceSection({onUserClick, props}) {
   const miRef = useRef(null);
 
   function sendData(e) {
@@ -21,13 +21,17 @@ export default function ServiceSection({onUserClick, values}) {
     // };
   }, []); // empty dependency array
 
+
   return (
+    console.log("userService component",props),
     <div className='serviceSec' ref={miRef}>
-      {Object.values(values.values.serviceList).map((val) => (
-        <div className='divCard' onClick={sendData} key={uuidv4()}>
-          <CardService services={val}></CardService>
-        </div>
-      ))}
+      {
+        props.data.services.map((val) => (
+          <div className='divCard' onClick={sendData} key={uuidv4()}>
+            <CardService service={val}></CardService>
+          </div>
+        ))
+      }
     </div>
   );
 }

@@ -43,10 +43,11 @@ function fillOutCardCl(data){
 }
 
 function fillOutCardEmp(data){
+    console.log("data users", data);
     return(
         <div className="infoEmp-sec">
             <div className="infoName-sec">
-                <p className="bold-letter">{data.personData.name} {data.personData.lname}</p>
+                <p className="bold-letter">{data.name} {data.lname}</p>
             </div>
             <div className="line-1"></div>
             <div className="infoAvailability-sec">
@@ -65,10 +66,9 @@ function fillOutCardEmp(data){
 //https://codepen.io/Incorr3ct/pen/ExvYJvN
 export default function CardUsers(props) { 
     let payload = props.users;
-    
-    
+
     return(
-        <div className="principal-sec-service" data-id={payload.id}>
+        <div className="principal-sec-service" data-id={payload.idUser}>
             <div className="image-sec">
                 <img src={payload.photo} alt="imagen del tema" ></img>
             </div>

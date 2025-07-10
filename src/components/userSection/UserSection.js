@@ -23,9 +23,9 @@ export default function UserSection({onUserClick,  values}) {
   }, []); // empty dependency array
 
   return (
-    console.log("userSection component"),
+    console.log("userSection component", values.users),
     <div className='userSec' ref={miRef}>
-      {Object.values(values.values.personList).map((val) => (
+      {Object.values(values.users).map((val) => (
         <div className='divCard' onClick={sendData} key={uuidv4()}>
           <CardUsers  users={val}></CardUsers>
         </div>

@@ -7,6 +7,7 @@ const initialState = {
     schedule: {
         profesional: "",
         service: "",
+        idService: "",
         dateTime: ""
     }
 };

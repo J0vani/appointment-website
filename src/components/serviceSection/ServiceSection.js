@@ -7,9 +7,8 @@ export default function ServiceSection({onUserClick, props}) {
   const miRef = useRef(null);
 
   function sendData(e) {
-    if(e.target.offsetParent.tagName.toLowerCase() === 'div' && onUserClick){
-      onUserClick(e.target.offsetParent.getAttribute('data-id'), miRef.current);
-    }
+    const infoToSend = {'idService' : e.currentTarget.dataset.id, 'service': miRef.current.querySelector('.bold-letter').textContent};
+      onUserClick(infoToSend, miRef.current);
   }
 
   useEffect(() => {
@@ -21,13 +20,14 @@ export default function ServiceSection({onUserClick, props}) {
     // };
   }, []); // empty dependency array
 
+  //<div className='divCard' onClick={sendData} key={uuidv4()}>
 
   return (
     console.log("userService component",props),
     <div className='serviceSec' ref={miRef}>
       {
         props.data.services.map((val) => (
-          <div className='divCard' onClick={sendData} key={uuidv4()}>
+          <div className='divCard' onClick={sendData} key={uuidv4()} data-id={val.id}>
             <CardService service={val}></CardService>
           </div>
         ))
